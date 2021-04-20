@@ -26,7 +26,12 @@ class CategoryRepository{
     public seeAll(){
         return this.categories
     }
-}
 
+    public findByName(name:string){
+        const category = this.categories.find(category => category.name === name)
+
+        return category
+    }
+}
 
 export default CategoryRepository
