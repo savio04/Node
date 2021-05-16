@@ -1,9 +1,16 @@
 import Category from '../model/Category'
 
-interface ICategoryRepository{
-    findByName(name:string):Category
-    seeAll():Category[]
-    create(name:string, descirption:string,created_at:Date):Category
+interface Propscategories{
+    name:string
+    description:string
+    created_at:Date
 }
 
+interface ICategoryRepository{
+    findByName(name:string):Category | undefined
+    seeAll():Category[]
+    create({name, description,created_at}: Propscategories):Category
+}
+
+export {Propscategories}
 export default ICategoryRepository

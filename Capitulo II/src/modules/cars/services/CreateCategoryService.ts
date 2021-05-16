@@ -5,16 +5,22 @@ interface RequestProps{
     description:string
 }
 
-const Repository = new CategoryRepository
 class CreateCategoryService{
+
+    private Repository
+
+    constructor(Repository: CategoryRepository){
+        this.Repository = Repository
+    }
+
     public execute({name,description}:RequestProps){
-        const Existingcategory = Repository.findByName(name)
+        const Existingcategory = this.Repository.findByName(name)
     
         if(Existingcategory){
             throw new Error('Already existing category')
         }
 
-        const category = Repository.create({
+        const category = this.Repository.create({
             name,
             description,
             created_at: new Date()
@@ -24,7 +30,7 @@ class CreateCategoryService{
     }
 
     public seeAll(){
-        const categories = Repository.seeAll()
+        const categories = this.Repository.seeAll()
 
         return categories
     }

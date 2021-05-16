@@ -1,13 +1,9 @@
 import Category from '../model/Category'
+import ICategoryRepository from './ICategoryRepository'
+import { Propscategories } from './ICategoryRepository'
 
 
-interface Propscategories{
-    name:string
-    description:string
-    created_at:Date
-}
-
-class CategoryRepository{
+class CategoryRepository implements ICategoryRepository{
     private categories:Category[]
 
     constructor(){

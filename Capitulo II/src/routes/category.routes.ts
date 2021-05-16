@@ -3,10 +3,11 @@ import CreateCategoryService from '../modules/cars/services/CreateCategoryServic
 import CategoryRepository from '../modules/cars/Repositories/CategoryRepositpry'
 const categoriesRoutes = Router()
 
-const CreateCategory = new CreateCategoryService
+const Repository = new CategoryRepository
 
 categoriesRoutes.post("/", (request,response) => {
     const {name,description}  = request.body
+    const CreateCategory = new CreateCategoryService(Repository)
 
     try{
         const category = CreateCategory.execute({
@@ -22,7 +23,7 @@ categoriesRoutes.post("/", (request,response) => {
 })
 
 categoriesRoutes.get("/",(request,response) => {
-    const categories = CreateCategory.seeAll()
+    const categories = Repository.seeAll()
 
     return response.json(categories)
 })

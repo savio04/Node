@@ -15,11 +15,11 @@ class CreateSpecificationService{
             throw new Error("specification alreay exisiting")
         }
 
-        const specification = Repository.create({
+        const created_at = new Date()
+        const specification = Repository.create(
             name,
             description,
-            created_at: new Date()
-        })
+            created_at)
 
         return specification
     }
