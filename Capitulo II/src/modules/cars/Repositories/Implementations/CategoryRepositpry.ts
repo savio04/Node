@@ -1,6 +1,6 @@
-import Category from '../model/Category'
-import ICategoryRepository from './ICategoryRepository'
-import { Propscategories } from './ICategoryRepository'
+import Category from '../../model/Category'
+import ICategoryRepository from '../ICategoryRepository'
+import { Propscategories } from '../ICategoryRepository'
 
 
 class CategoryRepository implements ICategoryRepository{

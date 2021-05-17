@@ -1,4 +1,4 @@
-import ICategoryRepository from "../../Repositories/CategoryRepositpry"
+import ICategoryRepository from "../../Repositories/Implementations/CategoryRepositpry"
 
 
 class ListCategoryUseCase{

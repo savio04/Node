@@ -1,4 +1,4 @@
-import CategoryRepository from '../../Repositories/CategoryRepositpry'
+import CategoryRepository from '../../Repositories/Implementations/CategoryRepositpry'
 import CreateCategoryController from './CreateCategoryController'
 import CreateCategoryUseCase from './CreateCategoryUseCase'
 

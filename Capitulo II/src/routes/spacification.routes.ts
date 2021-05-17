@@ -1,24 +1,9 @@
 import express from 'express'
-import CreateSpecificationService from '../modules/cars/services/CreateSpecificationService'
+import specificationController from '../modules/cars/useCases/CreateSpecification'
 
 const SpecificationRoute = express.Router()
 
 SpecificationRoute.post('/',(request,response) => {
-    const {name,description} = request.body
-    const SpacificationService = new CreateSpecificationService
-
-    try{
-        const spacification = SpacificationService.execute({
-            name,
-            description
-        })
-
-        return response.status(201).json(spacification)
-    }catch(err){
-        return response.status(400).json({
-            erro: `${err.message}`
-        })
-    }
-
+    return specificationController.handle(request,response)
 })
 export default SpecificationRoute
