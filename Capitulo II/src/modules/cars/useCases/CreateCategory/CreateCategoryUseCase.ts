@@ -1,11 +1,11 @@
-import CategoryRepository from '../Repositories/CategoryRepositpry'
+import CategoryRepository from '../../Repositories/CategoryRepositpry'
 
 interface RequestProps{
     name:string
     description:string
 }
 
-class CreateCategoryService{
+class CreateCategoryUseCase{
 
     private Repository
 
@@ -36,5 +36,5 @@ class CreateCategoryService{
     }
 }
 
-export default CreateCategoryService
+export default CreateCategoryUseCase
 
