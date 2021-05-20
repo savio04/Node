@@ -9,9 +9,11 @@ class ImportCategoryController{
 
     handle(request:Request,response:Response){
         const { file } = request
-        this.ImportCategoryUseCase.execute(file)
-
+        
+        this.ImportCategoryUseCase.execute(file) 
+        
         return response.status(200).send()
+    
     }
 }
 
