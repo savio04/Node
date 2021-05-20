@@ -11,7 +11,7 @@ class ListCategoryController{
     handle(request:Request, response:Response){
         const categories = this.ListCategoryUseCase.execute()
 
-        return response.json(categories)
+        return response.status(200).json(categories)
     }
 }
 
