@@ -1,40 +1,34 @@
-import Category from '../../model/Category'
+import { getRepository, Repository } from 'typeorm'
+import Category from '../../entities/Category'
 import ICategoryRepository from '../ICategoryRepository'
 import { Propscategories } from '../ICategoryRepository'
 
 
 class CategoryRepository implements ICategoryRepository{
-    private categories:Category[]
+    private categoryRepository:Repository<Category>
 
-    private static INSTANCE:CategoryRepository
-
-    private constructor(){
-        this.categories = []
+    constructor(){
+        this.categoryRepository = getRepository(Category)
     }
 
-    public static getInstance(){
-        if(!CategoryRepository.INSTANCE){
-            CategoryRepository.INSTANCE = new CategoryRepository
-        }
+    public async create({ name, description }:Propscategories){
 
-        return CategoryRepository.INSTANCE
+        const category = this.categoryRepository.create({
+            name,
+            description,
+        })
+
+        await this.categoryRepository.save(category)
     }
 
+    public async seeAll (){
+        const categories = await this.categoryRepository.find()
 
-    public create({ name, description, created_at }:Propscategories){
-        const category = new Category(name,description, created_at)
-
-        this.categories.push(category)
-
-        return category
+        return categories
     }
 
-    public seeAll(){
-        return this.categories
-    }
-
-    public findByName(name:string){
-        const category = this.categories.find(category => category.name === name)
+    public async findByName(name:string){
+        const category = await this.categoryRepository.findOne({name})
 
         return category
     }

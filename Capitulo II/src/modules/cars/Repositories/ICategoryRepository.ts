@@ -1,15 +1,14 @@
-import Category from '../model/Category'
+import Category from '../entities/Category'
 
 interface Propscategories{
     name:string
     description:string
-    created_at:Date
 }
 
 interface ICategoryRepository{
-    findByName(name:string):Category | undefined
-    seeAll():Category[]
-    create({name, description,created_at}: Propscategories):Category
+    findByName(name:string):Promise<Category | undefined>
+    seeAll():Promise<Category[]>
+    create({name, description}: Propscategories):Promise<void>
 }
 
 export {Propscategories}

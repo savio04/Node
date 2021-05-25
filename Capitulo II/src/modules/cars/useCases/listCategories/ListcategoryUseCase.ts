@@ -8,8 +8,10 @@ class ListCategoryUseCase{
         this.CategoryRepository = CategoryRepository
     }
 
-    execute(){
-        return this.CategoryRepository.seeAll()
+    async execute(){
+        const categories = await this.CategoryRepository.seeAll()
+
+        return categories
     }
 }
 

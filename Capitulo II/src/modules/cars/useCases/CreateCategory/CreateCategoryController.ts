@@ -8,11 +8,11 @@ class CreateCategoryController{
         this.CategoryUseCase = CategoryUseCase
     }
 
-    handle(request:Request,response:Response){
+    async handle(request:Request,response:Response){
         const {name,description}  = request.body
 
         try{
-            const category = this.CategoryUseCase.execute({
+            await this.CategoryUseCase.execute({
                 name,
                 description
             })

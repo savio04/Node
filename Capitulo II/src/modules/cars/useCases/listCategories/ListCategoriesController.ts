@@ -8,8 +8,8 @@ class ListCategoryController{
         this.ListCategoryUseCase = ListCategoryUseCase
     }
 
-    handle(request:Request, response:Response){
-        const categories = this.ListCategoryUseCase.execute()
+    async handle(request:Request, response:Response){
+        const categories = await this.ListCategoryUseCase.execute()
 
         return response.status(200).json(categories)
     }

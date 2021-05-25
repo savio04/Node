@@ -1,4 +1,4 @@
-import Specification from "../model/Specification";
+import Specification from "../entities/Specification";
 
 interface IspecificationRepository{
     findByName(name:string):Specification | undefined
