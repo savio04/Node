@@ -3,7 +3,8 @@
   "tupe": "module",
   "version": "1.0.0",
   "scripts": {
-    "dev": "ts-node-dev --transpile-only --respawn --ignore node_modules src/index.ts"
+    "dev": "ts-node-dev --transpile-only --respawn --ignore node_modules src/index.ts",
+    "typeorm":"ts-node-dev ./node_modules/typeorm/cli.js"
   },
   "main": "index.js",
   "license": "MIT",
