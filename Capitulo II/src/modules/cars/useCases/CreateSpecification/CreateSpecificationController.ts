@@ -8,11 +8,11 @@ class CreateSpecificationController{
         this.CreateSpecificationUseCase = CreateSpecificationUseCase
     }
 
-    handle(request:Request,response:Response){
+    async handle(request:Request,response:Response){
         const {name,description} = request.body
 
         try{
-            const spacification = this.CreateSpecificationUseCase.execute({
+            const spacification = await this.CreateSpecificationUseCase.execute({
                 name,
                 description
             })
@@ -22,7 +22,7 @@ class CreateSpecificationController{
             return response.status(400).json({
                 erro: `${err.message}`
             })
-    }
+        }
     }
 }
 

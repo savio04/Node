@@ -1,4 +1,4 @@
-import SpecificationRepository from "../../Repositories/Implementations/SpecificationRepository"
+import IspecificationRepository from "../../Repositories/ISpecificationRepository"
 
 interface RequestProps{
     name:string
@@ -6,24 +6,22 @@ interface RequestProps{
 }
 
 class CreateSpecificationUseCase{
-    private SpecificationRepository:SpecificationRepository
+    private SpecificationRepository:IspecificationRepository
 
-    constructor(SpecificationRepository:SpecificationRepository){
+    constructor(SpecificationRepository:IspecificationRepository){
         this.SpecificationRepository = SpecificationRepository
     }
 
-    public execute({name,description}:RequestProps){
-        const specificationExisting = this.SpecificationRepository.findByName(name)
+    public async execute({name,description}:RequestProps){
+        const specificationExisting = await this.SpecificationRepository.findByName(name)
 
         if(specificationExisting){
             throw new Error("specification alreay exisiting")
         }
-
-        const created_at = new Date()
-        const specification = this.SpecificationRepository.create(
+        const specification = await this.SpecificationRepository.create(
             name,
-            description,
-            created_at)
+            description
+        )
 
         return specification
     }

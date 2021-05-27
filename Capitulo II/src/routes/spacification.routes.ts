@@ -4,6 +4,6 @@ import specificationController from '../modules/cars/useCases/CreateSpecificatio
 const SpecificationRoute = express.Router()
 
 SpecificationRoute.post('/',(request,response) => {
-    return specificationController.handle(request,response)
+    return specificationController().handle(request,response)
 })
 export default SpecificationRoute

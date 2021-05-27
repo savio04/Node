@@ -48,17 +48,15 @@ class ImportCategoryUseCase{
         for(const category of categories){
             const {name,description} = category
 
-            const existing = this.CategoryRepository.findByName(name)
+            const existing = await this.CategoryRepository.findByName(name)
 
             if(!existing){
                 this.CategoryRepository.create({
                     name,
-                    description,
-                    created_at: new Date()
+                    description
                 })
             }
         }
-        console.log(this.CategoryRepository.seeAll())
     }
 }
 

@@ -1,28 +1,37 @@
+import { getRepository, Repository } from 'typeorm'
 import Specification from '../../entities/Specification'
 import IspecificationRepository from '../ISpecificationRepository'
 
 
 class SpecificationRepository implements IspecificationRepository{
 
-    private Specifications:Specification[]
+    private SpecificationRepository:Repository<Specification>
     
     constructor(){
-        this.Specifications = []
+        this.SpecificationRepository = getRepository(Specification)
     }
-    public create(name:string, description:string, created_at:Date){
-        const specification = new Specification(name,description, created_at)
 
-        this.Specifications.push(specification)
+    public async create(name:string, description:string){
+        const specification =  this.SpecificationRepository.create({
+            name,
+            description
+        })
+
+        await this.SpecificationRepository.save(specification)
 
         return specification
     }
 
-    public seeAll(){
-        return this.Specifications
+    public async seeAll(){
+        const specifications = await this.SpecificationRepository.find()
+
+        return specifications
     }
 
-    public findByName(name:string){
-        const specificationExisting = this.Specifications.find(specification => specification.name === name)
+    public async findByName(name:string){
+        const specificationExisting = await this.SpecificationRepository.findOne({
+            name
+        })
 
         return specificationExisting
     }

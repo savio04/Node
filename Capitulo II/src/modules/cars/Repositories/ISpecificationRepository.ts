@@ -1,9 +1,9 @@
 import Specification from "../entities/Specification";
 
 interface IspecificationRepository{
-    findByName(name:string):Specification | undefined
-    seeAll():Specification[]
-    create(name:string, descirption:string,created_at:Date):Specification
+    findByName(name:string):Promise<Specification | undefined>
+    seeAll():Promise<Specification[]>
+    create(name:string, descirption:string):Promise<Specification>
 }
 
 export default IspecificationRepository
