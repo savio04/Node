@@ -1,16 +1,17 @@
 import IspecificationRepository from "../../Repositories/ISpecificationRepository"
+import { inject,injectable } from 'tsyringe'
 
 interface RequestProps{
     name:string
     description:string
 }
 
+@injectable()
 class CreateSpecificationUseCase{
-    private SpecificationRepository:IspecificationRepository
-
-    constructor(SpecificationRepository:IspecificationRepository){
-        this.SpecificationRepository = SpecificationRepository
-    }
+    constructor(
+        @inject('specificationRepository')
+        private SpecificationRepository:IspecificationRepository
+    ){}
 
     public async execute({name,description}:RequestProps){
         const specificationExisting = await this.SpecificationRepository.findByName(name)

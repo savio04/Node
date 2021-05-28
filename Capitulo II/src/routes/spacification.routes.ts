@@ -1,9 +1,8 @@
 import express from 'express'
-import specificationController from '../modules/cars/useCases/CreateSpecification'
+import CreateSpecificationController from '../modules/cars/useCases/CreateSpecification/CreateSpecificationController'
 
 const SpecificationRoute = express.Router()
 
-SpecificationRoute.post('/',(request,response) => {
-    return specificationController().handle(request,response)
-})
+const specificationController = new CreateSpecificationController
+SpecificationRoute.post('/',specificationController.handle)
 export default SpecificationRoute
