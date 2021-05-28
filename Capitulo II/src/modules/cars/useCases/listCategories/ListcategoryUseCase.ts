@@ -1,12 +1,13 @@
+import { inject, injectable } from "tsyringe"
 import ICategoryRepository from "../../Repositories/Implementations/CategoryRepositpry"
 
-
+@injectable()
 class ListCategoryUseCase{
-    private CategoryRepository:ICategoryRepository
     
-    constructor(CategoryRepository:ICategoryRepository){
-        this.CategoryRepository = CategoryRepository
-    }
+    constructor(
+        @inject('specificationRepository')
+        private CategoryRepository:ICategoryRepository
+    ){}
 
     async execute(){
         const categories = await this.CategoryRepository.seeAll()
