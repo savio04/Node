@@ -1,17 +1,18 @@
-import CategoryRepository from '../../Repositories/Implementations/CategoryRepositpry'
+import ICategoryRepository from '../../Repositories/Implementations/CategoryRepositpry'
+import { inject, injectable } from 'tsyringe'
 
 interface RequestProps{
     name:string
     description:string
 }
 
+@injectable()
 class CreateCategoryUseCase{
 
-    private Repository
-
-    constructor(Repository: CategoryRepository){
-        this.Repository = Repository
-    }
+    constructor(
+        @inject('categoryRepository')
+        private Repository: ICategoryRepository
+    ){}
 
     public async execute({name,description}:RequestProps){
         const Existingcategory = await this.Repository.findByName(name)
