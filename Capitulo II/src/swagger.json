@@ -72,6 +72,70 @@
                     }    
                 }
             }
+        },
+        "/categories/import":{
+            "post":{
+                "tags": ["Category"],
+                "summary": "Upload new category",
+                "description": "upload new category",
+                "requestBody":{
+                    "content": {
+                        "multipart/form-data":{
+                            "schema":{
+                                "type": "object",
+                                "properties": {
+                                    "file":{
+                                        "type": "string",
+                                        "format":"binary"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description": "Created"
+                    }
+                }
+            }
+        },
+        "/specification":{
+            "post":{
+                "tags": ["specifications"],
+                "summary": "Create a specification",
+                "description": "Create a new specification",
+                "requestBody":{
+                    "content": {
+                        "application/json":{
+                            "schema":{
+                                "$ref": "#/definitions/specification"
+                            }
+                        }
+                    }
+                },
+                "responses":{
+                    "201":{
+                        "description": "Created"
+                    },
+                    "500":{
+                        "description": "Specification already existe"
+                    }
+                }
+            }
+        }
+    },
+    "definitions":{
+        "specification":{
+            "type": "object",
+            "properties":{
+                "name":{
+                    "type":"string"
+                },
+                "description":{
+                    "type": "string"
+                }
+            }
         }
     }
 }
