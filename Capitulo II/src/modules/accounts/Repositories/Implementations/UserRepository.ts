@@ -1,11 +1,13 @@
 import { getRepository, Repository } from "typeorm";
-import User from "../../entiites/User";
-import {IUserDTO} from '../IUsersRepository'
+import User from "../../entities/User";
+import IUsersRepository, {IUserDTO} from '../IUsersRepository'
 import bcrypt from 'bcryptjs'
 
 
-class UserRepository{
-    constructor(private UserRepository:Repository<User>){
+class UserRepository implements IUsersRepository{
+    private UserRepository:Repository<User>
+
+    constructor(){
         this.UserRepository = getRepository(User)
     }
 

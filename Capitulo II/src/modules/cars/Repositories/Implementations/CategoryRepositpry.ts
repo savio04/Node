@@ -23,7 +23,6 @@ class CategoryRepository implements ICategoryRepository{
 
     public async seeAll (){
         const categories = await this.categoryRepository.find()
-
         return categories
     }
 

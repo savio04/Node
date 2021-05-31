@@ -1,15 +1,15 @@
 import { inject,injectable } from 'tsyringe'
-import IUsersrepository, { IUserDTO } from '../../Repositories/IUsersRepository'
+import IUsersRepository, { IUserDTO } from '../../Repositories/IUsersRepository'
 
 @injectable()
 class CreateUserUseCase{
     constructor(
         @inject('userRepository')
-        private CreateUserRepository:IUsersrepository
+        private Repository:IUsersRepository
     ){}
     
     async execute({name,email,password,driver_license,username}:IUserDTO){
-        await this.CreateUserRepository.create({
+        await this.Repository.create({
             name,
             email,
             password,

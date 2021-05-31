@@ -5,7 +5,7 @@ import ICategoryRepository from "../../Repositories/Implementations/CategoryRepo
 class ListCategoryUseCase{
     
     constructor(
-        @inject('specificationRepository')
+        @inject('categoryRepository')
         private CategoryRepository:ICategoryRepository
     ){}
 

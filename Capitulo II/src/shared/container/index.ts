@@ -1,6 +1,6 @@
 import { container } from 'tsyringe'
-import UserRepository from '../../modules/accounts/Repositories/Implementations/UserRepostory'
-import IUsersrepository from '../../modules/accounts/Repositories/IUsersRepository'
+import UserRepository from '../../modules/accounts/Repositories/Implementations/UserRepository'
+import IUsersRepository from '../../modules/accounts/Repositories/IUsersRepository'
 import ICategoryRepository from '../../modules/cars/Repositories/ICategoryRepository' 
 import CategoryRepository from '../../modules/cars/Repositories/Implementations/CategoryRepositpry'
 import SpecificationRepository from '../../modules/cars/Repositories/Implementations/SpecificationRepository'
@@ -19,7 +19,7 @@ container.registerSingleton<IspecificationRepository>(
 )
 
 //User
-container.registerSingleton<IUsersrepository>(
+container.registerSingleton<IUsersRepository>(
     "userRepository",
     UserRepository
 )

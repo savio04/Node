@@ -7,8 +7,8 @@ export interface IUserDTO{
     password:string
 }
 
-interface IUsersrepository{
+interface IUsersRepository{
     create({name,username,email,driver_license,password}:IUserDTO):Promise<void>
 }
 
-export default IUsersrepository
+export default IUsersRepository
