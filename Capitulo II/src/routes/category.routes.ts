@@ -3,6 +3,7 @@ import CreateCategoryController from '../modules/cars/useCases/CreateCategory/Cr
 import listCategoryController from '../modules/cars/useCases/listCategories/ListCategoriesController'
 import multer from 'multer'
 import ImportCategoryController from '../modules/cars/useCases/Importcategory/ImportCategoryController'
+import ensureAutheticaded from '../middlewares/ensureAtheticated'
 const categoriesRoutes = Router()
 
 const upload = multer({
@@ -10,7 +11,7 @@ const upload = multer({
 })
 
 const createcategoryContoller = new CreateCategoryController
-categoriesRoutes.post("/", createcategoryContoller.handle)
+categoriesRoutes.post("/", ensureAutheticaded,createcategoryContoller.handle)
 
 const listCategories = new listCategoryController
 categoriesRoutes.get("/",listCategories.handle)

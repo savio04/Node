@@ -26,6 +26,12 @@ class UserRepository implements IUsersRepository{
 
         return emailExiting
     }
+
+    async findById(id:string){
+        const user = await this.UserRepository.findOne({id})
+
+        return user
+    }
 }
 
 export default UserRepository

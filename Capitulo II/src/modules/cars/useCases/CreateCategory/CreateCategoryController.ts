@@ -7,19 +7,14 @@ class CreateCategoryController{
     async handle(request:Request,response:Response){
         const {name,description}  = request.body
         const CategoryUseCase = container.resolve(CreateCategoryUseCase)
+        
+        await CategoryUseCase.execute({
+            name,
+            description
+        })
 
-        try{
-            await CategoryUseCase.execute({
-                name,
-                description
-            })
-
-            return response.status(201).send()
-        }catch(err){
-            return response.status(400).json({
-                err: `${err.message}`
-            })
-        }
+        return response.status(201).send()
+    
     }
 }
 

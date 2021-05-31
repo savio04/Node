@@ -27,7 +27,7 @@ class AutheticateUserUseCase{
             throw new Error('Emaill or password incorrect!')
         }
 
-        const token = sign({}, "a3675 95574905e7f68deba4d753a8e3b",{
+        const token = sign({}, "a367595574905e7f68deba4d753a8e3b",{
             subject: userExisting.id,
             expiresIn: "1d"
         })

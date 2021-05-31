@@ -1,5 +1,6 @@
 import ICategoryRepository from '../../Repositories/Implementations/CategoryRepositpry'
 import { inject, injectable } from 'tsyringe'
+import AppError from '../../../../errors/AppError'
 
 interface RequestProps{
     name:string
@@ -18,7 +19,7 @@ class CreateCategoryUseCase{
         const Existingcategory = await this.Repository.findByName(name)
     
         if(Existingcategory){
-            throw new Error('Already existing category')
+            throw new AppError('Already existing category')
         }
 
         await this.Repository.create({

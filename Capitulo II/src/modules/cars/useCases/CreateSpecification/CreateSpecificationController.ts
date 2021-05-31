@@ -7,19 +7,13 @@ class CreateSpecificationController{
     async handle(request:Request,response:Response){
         const {name,description} = request.body
         const SpecificationUseCase = container.resolve(CreateSpecificationUseCase)
+        const spacification = await SpecificationUseCase.execute({
+            name,
+            description
+        })
 
-        try{
-            const spacification = await SpecificationUseCase.execute({
-                name,
-                description
-            })
-
-            return response.status(201).json(spacification)
-        }catch(err){
-            return response.status(400).json({
-                erro: `${err.message}`
-            })
-        }
+        return response.status(201).json(spacification)
+    
     }
 }
 
