@@ -1,7 +1,6 @@
 import { getRepository, Repository } from "typeorm";
 import User from "../../entities/User";
 import IUsersRepository, {IUserDTO} from '../IUsersRepository'
-import bcrypt from 'bcryptjs'
 
 
 class UserRepository implements IUsersRepository{
@@ -12,15 +11,20 @@ class UserRepository implements IUsersRepository{
     }
 
     async create({name,email,driver_license,password}:IUserDTO){
-        const passeordCripto = await bcrypt.hash(password,10)
         const user = this.UserRepository.create({
             name,
             email,
-            password: passeordCripto,
+            password,
             driver_license
         })
 
         await this.UserRepository.save(user)
+    }
+
+    async findByEmail(email:string){
+        const emailExiting = await this.UserRepository.findOne({email})
+
+        return emailExiting
     }
 }
 

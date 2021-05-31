@@ -16,7 +16,7 @@ class CreateUserController{
 
             return response.status(201).send()
         }catch(err){
-            return response.status(500).json({
+            return response.status(400).json({
                 err: `${err.message}`
             })
         }
