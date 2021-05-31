@@ -11,14 +11,13 @@ class UserRepository implements IUsersRepository{
         this.UserRepository = getRepository(User)
     }
 
-    async create({name,email,driver_license,password,username}:IUserDTO){
+    async create({name,email,driver_license,password}:IUserDTO){
         const passeordCripto = await bcrypt.hash(password,10)
         const user = this.UserRepository.create({
             name,
             email,
             password: passeordCripto,
-            driver_license,
-            username
+            driver_license
         })
 
         await this.UserRepository.save(user)

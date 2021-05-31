@@ -1,14 +1,13 @@
 
 export interface IUserDTO{
     name:string
-    username:string
     email:string
     driver_license:string
     password:string
 }
 
 interface IUsersRepository{
-    create({name,username,email,driver_license,password}:IUserDTO):Promise<void>
+    create({name,email,driver_license,password}:IUserDTO):Promise<void>
 }
 
 export default IUsersRepository
