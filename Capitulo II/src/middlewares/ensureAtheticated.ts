@@ -21,6 +21,10 @@ async function ensureAutheticaded(request:Request,response:Response,next:NextFun
         if(!user){
             throw new AppError('user not existing',401)
         }
+        //Adicionando o id apos o usario ser altenticado
+        request.user = {
+            id: user_id
+        }
         next()
     }catch(err){
         throw new AppError(`${err.message}`,401)

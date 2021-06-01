@@ -7,7 +7,7 @@ const Routes = express.Router()
 
 Routes.use('/categories', categoriesRoutes)
 Routes.use('/specification', SpacificationRoute)
-Routes.use('/sign-up', AccountRoute)
+Routes.use('/users', AccountRoute)
 Routes.use('/sign-in', AutheticateRoute)
 
 export default Routes
