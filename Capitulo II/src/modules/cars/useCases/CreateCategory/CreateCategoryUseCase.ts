@@ -1,6 +1,6 @@
-import ICategoryRepository from '../../Repositories/Implementations/CategoryRepository'
-import { inject, injectable } from 'tsyringe'
+import ICategoryRepository from '../../Repositories/ICategoryRepository'
 import AppError from '../../../../errors/AppError'
+import { inject, injectable } from 'tsyringe'
 
 interface RequestProps{
     name:string
@@ -10,9 +10,10 @@ interface RequestProps{
 @injectable()
 class CreateCategoryUseCase{
 
+    
     constructor(
         @inject('categoryRepository')
-        private Repository: ICategoryRepository
+        private Repository:ICategoryRepository
     ){}
 
     public async execute({name,description}:RequestProps){
