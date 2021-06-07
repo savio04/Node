@@ -3,9 +3,10 @@ import categoriesRoutes from './category.routes'
 import SpacificationRoute from './spacification.routes'
 import AccountRoute from './accounts.routes'
 import AutheticateRoute from './autheticate.routes'
+import ensureAutheticaded from '../middlewares/ensureAtheticated'
 const Routes = express.Router()
 
-Routes.use('/categories', categoriesRoutes)
+Routes.use('/categories', ensureAutheticaded,categoriesRoutes)
 Routes.use('/specification', SpacificationRoute)
 Routes.use('/users', AccountRoute)
 Routes.use('/sign-in', AutheticateRoute)
