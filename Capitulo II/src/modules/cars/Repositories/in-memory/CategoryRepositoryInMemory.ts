@@ -2,7 +2,11 @@ import Category from "../../entities/Category";
 import ICategoryRepository, { Propscategories } from "../ICategoryRepository";
 
 class CategoryRepositoryInMemory implements ICategoryRepository{
-    categories:Category[] = []
+    private categories:Category[]
+
+    constructor(){
+        this.categories = []
+    }
 
     async findByName(name:string){
         const category = this.categories.find(category => category.name === name)

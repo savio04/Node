@@ -2,7 +2,7 @@ import { container } from 'tsyringe'
 import UserRepository from '../../modules/accounts/Repositories/Implementations/UserRepository'
 import IUsersRepository from '../../modules/accounts/Repositories/IUsersRepository'
 import ICategoryRepository from '../../modules/cars/Repositories/ICategoryRepository' 
-import CategoryRepository from '../../modules/cars/Repositories/Implementations/CategoryRepositpry'
+import CategoryRepository from '../../modules/cars/Repositories/Implementations/CategoryRepository'
 import SpecificationRepository from '../../modules/cars/Repositories/Implementations/SpecificationRepository'
 import IspecificationRepository from '../../modules/cars/Repositories/ISpecificationRepository'
 

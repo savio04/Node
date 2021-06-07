@@ -1,4 +1,4 @@
-import ICategoryRepository from '../../Repositories/Implementations/CategoryRepositpry'
+import ICategoryRepository from '../../Repositories/Implementations/CategoryRepository'
 import { inject, injectable } from 'tsyringe'
 import AppError from '../../../../errors/AppError'
 
