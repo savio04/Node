@@ -2,6 +2,7 @@ import { inject, injectable } from "tsyringe";
 import IUsersRepository from "../../Repositories/IUsersRepository";
 import bcrypt from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
+import AppError from "../../../../errors/AppError";
 
 interface IAuthRequest{
     email:string
@@ -18,13 +19,13 @@ class AutheticateUserUseCase{
         const userExisting = await this.userRepository.findByEmail(email)
 
         if(!userExisting){
-            throw new Error('Emaill or password incorrect!')
+            throw new AppError('Emaill or password incorrect!')
         }
 
         const passwordCompare = await bcrypt.compare(password,userExisting.password)
 
         if(!passwordCompare){
-            throw new Error('Emaill or password incorrect!')
+            throw new AppError('Emaill or password incorrect!')
         }
 
         const token = sign({}, "a367595574905e7f68deba4d753a8e3b",{
