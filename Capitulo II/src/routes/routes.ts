@@ -6,7 +6,7 @@ import AutheticateRoute from './autheticate.routes'
 import ensureAutheticaded from '../middlewares/ensureAtheticated'
 const Routes = express.Router()
 
-Routes.use('/categories', ensureAutheticaded,categoriesRoutes)
+Routes.use('/categories',categoriesRoutes)
 Routes.use('/specification', SpacificationRoute)
 Routes.use('/users', AccountRoute)
 Routes.use('/sign-in', AutheticateRoute)

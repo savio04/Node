@@ -1,3 +1,4 @@
+import AppError from "../../../../errors/AppError"
 import CategoryRepositoryInMemory from "../../Repositories/in-memory/CategoryRepositoryInMemory"
 import CreateCategoryUseCase from "./CreateCategoryUseCase"
 
@@ -26,8 +27,25 @@ describe("Create Category", () => {
         const categoryCreadted = await categoriesRepositoryInMemory
         .findByName(category.name)
 
-        console.log(categoryCreadted)
-
         expect(categoryCreadted).toHaveProperty("id")
+    })
+
+    it("Should not be able to create a new category with name exists", async () => {
+        expect(async () => {
+            const category = {
+                name: "name category test",
+                description: "descriprion category test"
+            }
+            
+            await createCategoryUseCase.execute({
+                name: category.name,
+                description: category.description
+            })
+    
+            await createCategoryUseCase.execute({
+                name: category.name,
+                description: category.description
+            })
+        }).rejects.toBeInstanceOf(AppError)
     })
 })

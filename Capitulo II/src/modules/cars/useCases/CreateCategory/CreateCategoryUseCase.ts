@@ -28,12 +28,6 @@ class CreateCategoryUseCase{
             description,
         })
     }
-
-    public async seeAll(){
-        const categories = await this.Repository.seeAll()
-
-        return categories
-    }
 }
 
 export default CreateCategoryUseCase

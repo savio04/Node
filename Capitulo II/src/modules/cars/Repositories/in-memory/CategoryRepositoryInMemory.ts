@@ -1,5 +1,6 @@
 import Category from "../../entities/Category";
 import ICategoryRepository, { Propscategories } from "../ICategoryRepository";
+import { v4 as uuidv4 } from 'uuid'
 
 class CategoryRepositoryInMemory implements ICategoryRepository{
     private categories:Category[]
@@ -22,6 +23,7 @@ class CategoryRepositoryInMemory implements ICategoryRepository{
         const newCategory = new Category
 
         Object.assign(newCategory,{
+            id:uuidv4(),
             name,
             description
         })
