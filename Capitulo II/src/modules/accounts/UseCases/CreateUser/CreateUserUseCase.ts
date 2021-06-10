@@ -1,7 +1,7 @@
 import { inject,injectable } from 'tsyringe'
 import IUsersRepository, { IUserDTO } from '../../Repositories/IUsersRepository'
 import bcrypt from 'bcryptjs'
-import AppError from '../../../../errors/AppError'
+import AppError from '../../../../shared/errors/AppError'
 
 @injectable()
 class CreateUserUseCase{

@@ -1,7 +1,7 @@
 import { getRepository, Repository } from 'typeorm'
-import Category from '../../entities/Category'
-import ICategoryRepository from '../ICategoryRepository'
-import { Propscategories } from '../ICategoryRepository'
+import Category from '../entities/Category'
+import ICategoryRepository from '../../../Repositories/ICategoryRepository'
+import { Propscategories } from '../../../Repositories/ICategoryRepository'
 
 
 class CategoryRepository implements ICategoryRepository{

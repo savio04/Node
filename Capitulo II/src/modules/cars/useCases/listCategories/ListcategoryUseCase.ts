@@ -1,5 +1,5 @@
 import { inject, injectable } from "tsyringe"
-import ICategoryRepository from "../../Repositories/Implementations/CategoryRepository"
+import ICategoryRepository from "../../Repositories/ICategoryRepository"
 
 @injectable()
 class ListCategoryUseCase{

@@ -1,4 +1,4 @@
-import User from "../../entities/User";
+import User from "../../infra/typeorm/entities/User";
 import IUsersRepository, { IUserDTO } from "../IUsersRepository";
 import { v4 as uuidv4 } from 'uuid'
 

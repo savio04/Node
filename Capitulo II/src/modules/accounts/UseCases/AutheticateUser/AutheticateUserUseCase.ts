@@ -2,7 +2,7 @@ import { inject, injectable } from "tsyringe";
 import IUsersRepository from "../../Repositories/IUsersRepository";
 import bcrypt from 'bcryptjs'
 import { sign } from 'jsonwebtoken'
-import AppError from "../../../../errors/AppError";
+import AppError from "../../../../shared/errors/AppError";
 
 interface IAuthRequest{
     email:string

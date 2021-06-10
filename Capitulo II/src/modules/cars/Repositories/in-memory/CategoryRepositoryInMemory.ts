@@ -1,4 +1,4 @@
-import Category from "../../entities/Category";
+import Category from "../../infra/typeorm/entities/Category";
 import ICategoryRepository, { Propscategories } from "../ICategoryRepository";
 import { v4 as uuidv4 } from 'uuid'
 
