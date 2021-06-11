@@ -1,11 +1,12 @@
 import AppError from "../../../../shared/errors/AppError"
 import ICarsRepository, { ICarsDTO } from "../../Repositories/ICarsRepository"
+import { injectable, inject } from 'tsyringe'
 
-//@injectable()
+@injectable()
 class CreateCarUseCase{
      
     constructor(
-        //@inject("carsRepository")
+        @inject("carsRepository")
         private Carsrepository:ICarsRepository
     ){}
 

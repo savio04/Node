@@ -6,7 +6,7 @@ import CategoryRepository from '../../modules/cars/infra/typeorm/repositories/Ca
 import SpecificationRepository from '../../modules/cars/infra/typeorm/repositories/SpecificationRepository'
 import IspecificationRepository from '../../modules/cars/Repositories/ISpecificationRepository'
 import ICarsRepository from '../../modules/cars/Repositories/ICarsRepository'
-import CarsRepositoryInMemory from '../../modules/cars/Repositories/in-memory/CarsRepositoryInMemory'
+import CarsRepository from '../../modules/cars/infra/typeorm/repositories/CarsRepository'
 
 //Category
 container.registerSingleton<ICategoryRepository>(
@@ -29,5 +29,5 @@ container.registerSingleton<IUsersRepository>(
 //Cars
 container.registerSingleton<ICarsRepository>(
     "carsRepository",
-    CarsRepositoryInMemory
+    CarsRepository
 )
