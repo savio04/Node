@@ -1,8 +1,10 @@
 class Car{
 
-    id?:string
-    
+    id:string
+
     name:string
+
+    available:boolean
     
     description:string
     
@@ -15,6 +17,8 @@ class Car{
     brand:string
     
     category_id:string
+
+    created_at:Date
 }
 
 export default Car

@@ -1,11 +1,11 @@
-import { inject, injectable } from "tsyringe"
+import AppError from "../../../../shared/errors/AppError"
 import ICarsRepository, { ICarsDTO } from "../../Repositories/ICarsRepository"
 
-@injectable()
+//@injectable()
 class CreateCarUseCase{
      
     constructor(
-        @inject("carsRepository")
+        //@inject("carsRepository")
         private Carsrepository:ICarsRepository
     ){}
 
@@ -18,7 +18,13 @@ class CreateCarUseCase{
         category_id,
         license_plate
     }:ICarsDTO){
-        await this.Carsrepository.create({
+        const carAlreadyExisiting = await this.Carsrepository.findByLicensePlate(license_plate)
+        
+        if(carAlreadyExisiting){
+            throw new AppError('Car Already existing')
+        }
+        
+        const car = await this.Carsrepository.create({
             name,
             description,
             fine_amount,
@@ -27,6 +33,8 @@ class CreateCarUseCase{
             category_id,
             license_plate
         })
+
+        return car
     }
 }
 
