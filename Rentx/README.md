@@ -2,7 +2,6 @@
 
 **Requisitos funcionais**
 [x] Deve ser possivel cadastrar um carro.
-[x] Deve ser possivel listar todas as categorias
 
 **Regras de negócio**
 [ ] Não deve ser possivel cadastrar um carro com uma placa ja existente.
