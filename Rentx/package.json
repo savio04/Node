@@ -5,7 +5,8 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --respawn --ignore node_modules src/shared/infra/http/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "test": "jest"
+    "test": "jest",
+    "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "main": "index.js",
   "license": "MIT",

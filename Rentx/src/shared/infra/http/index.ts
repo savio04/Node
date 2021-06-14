@@ -5,12 +5,13 @@ import swaggerUi from 'swagger-ui-express'
 import swaggerFile from '../../../swagger.json'
 import cors from 'cors'
 
-import '../typeorm'
+import createconnection from '../typeorm'
 import '../../container'
 import Routes from './routes/routes'
 import AppError from '../../errors/AppError'
 
 
+createconnection()
 const app = express()
 app.use(express.json())
 app.use(cors())
