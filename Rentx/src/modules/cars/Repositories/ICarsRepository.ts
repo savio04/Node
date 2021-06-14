@@ -16,6 +16,8 @@ interface ICarsRepository{
     }:ICarsDTO):Promise<Car>
     
     findByLicensePlate(license_plate:string):Promise<Car | undefined>
+
+    listAll(brand?:string,category_id?:string,name?:string):Promise<Car[]>
 }
 
 export default ICarsRepository

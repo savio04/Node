@@ -42,6 +42,21 @@ class CarsRepositoryInMemory implements ICarsRepository{
 
         return car;
     }
+
+    async listAll(
+        brand?:string,
+        category_id?:string,
+        name?:string
+    ){
+        return this.Cars
+        .filter(car => car.available === true)
+        .filter(
+        (car) => 
+            (brand && car.brand === brand) || 
+            (category_id && car.category_id === category_id)|| 
+            (name && Car.name === name)
+        )
+    }
 }
 
 export default CarsRepositoryInMemory

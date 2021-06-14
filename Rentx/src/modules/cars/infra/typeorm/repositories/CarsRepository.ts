@@ -40,6 +40,13 @@ class CarsRepository implements ICarsRepository {
 
         return car
     }
+
+    async listAll(){
+        const cars = await this.carsRepository.find({
+            where: {available:true}
+        })
+        return cars
+    }
 }
 
 export default CarsRepository
