@@ -1,5 +1,5 @@
 import CarsRepositoryInMemory from "../../Repositories/in-memory/CarsRepositoryInMemory"
-import ListCarsUseCase from "./ListCarsUseCase"
+import ListCarsUseCase from "./ListAvailableCarsUseCase"
 
 let carsRepositoryInMemory:CarsRepositoryInMemory
 let listCarsUseCase:ListCarsUseCase
@@ -25,7 +25,7 @@ describe('List cars', () => {
         expect(cars).toEqual([car])
     })
 
-    it("should be able to list all available all cars by name", async () => {
+    it("should be able to list all available all cars by brand", async () => {
         const car = await carsRepositoryInMemory.create({
             name: "Car2",
             description: "fbdfdfbdfbdfb",
@@ -35,9 +35,48 @@ describe('List cars', () => {
             category_id: "8b87b9dc-f14d-40e1-b042-34a998f43680",
             license_plate: "lk,li,kli"
         })
+
         
         const cars = await listCarsUseCase.execute({
             brand: 'aqui'
+        })
+
+        expect(cars).toEqual([car])
+    })
+
+    it("should be able to list all available all cars by name", async () => {
+        const car = await carsRepositoryInMemory.create({
+            name: "Car3",
+            description: "fbdfdfbdfbdfb",
+            daily_rate: 45,
+            brand: "aqui",
+            fine_amount: 79998,
+            category_id: "8b87b9dc-f14d-40e1-b042-34a998f43680",
+            license_plate: "lk,li,kli"
+        })
+
+        
+        const cars = await listCarsUseCase.execute({
+            name: 'Car3'
+        })
+
+        expect(cars).toEqual([car])
+    })
+
+    it("should be able to list all available all cars by category", async () => {
+        const car = await carsRepositoryInMemory.create({
+            name: "Car2",
+            description: "fbdfdfbdfbdfb",
+            daily_rate: 45,
+            brand: "aqui",
+            fine_amount: 79998,
+            category_id: "554433",
+            license_plate: "lk,li,kli"
+        })
+
+        
+        const cars = await listCarsUseCase.execute({
+            category_id: '554433'
         })
 
         expect(cars).toEqual([car])

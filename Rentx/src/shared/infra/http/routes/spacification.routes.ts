@@ -10,5 +10,6 @@ SpecificationRoute.post(
     '/',
     ensureAutheticaded,
     ensureAdmin,
-    specificationController.handle)
+    specificationController.handle
+    )
 export default SpecificationRoute

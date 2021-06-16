@@ -1,3 +1,4 @@
+import { inject, injectable } from "tsyringe";
 import ICarsRepository from "../../Repositories/ICarsRepository";
 
 interface IRequest{
@@ -6,13 +7,18 @@ interface IRequest{
     name?:string
 }
 
-class ListCarsUseCase{
-    constructor(private repositoryCars:ICarsRepository){}
+@injectable()
+class ListAvailableCarsUseCase{
+    constructor(
+        @inject('carsRepository')
+        private repositoryCars:ICarsRepository
+    ){}
 
     async execute({name,brand, category_id}:IRequest){
+        
         const cars = await this.repositoryCars.listAll(
-            name,
             brand,
+            name,
             category_id
         )
 
@@ -20,4 +26,4 @@ class ListCarsUseCase{
     }
 }
 
-export default ListCarsUseCase
+export default ListAvailableCarsUseCase

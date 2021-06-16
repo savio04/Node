@@ -8,9 +8,11 @@ const AccountRoute = Router()
 const upload = multer(uploadConfig.upload('./temp/avatar'))
 
 const userController = new CreateUserController
+const AvatarUploadController = new UpdateUserAvatarController
+
+
 AccountRoute.post('/',userController.handle)
 
-const AvatarUploadController = new UpdateUserAvatarController
 AccountRoute.patch('/avatar',ensureAutheticaded,upload.single('avatar'),AvatarUploadController.handle)
 
 export default AccountRoute
