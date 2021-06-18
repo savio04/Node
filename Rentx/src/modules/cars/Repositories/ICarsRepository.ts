@@ -1,4 +1,5 @@
 import Car from "../infra/typeorm/entities/Car";
+import Specification from "../infra/typeorm/entities/Specification";
 
 export interface ICarsDTO{
     name:string
@@ -8,11 +9,12 @@ export interface ICarsDTO{
     fine_amount:number
     brand:string
     category_id:string
+    specifications?:Specification[]
 }
 
 interface ICarsRepository{
     create({
-        name,description,daily_rate,license_plate,fine_amount,brand,category_id
+        name,description,daily_rate,license_plate,fine_amount,brand,category_id,specifications
     }:ICarsDTO):Promise<Car>
     
     findByLicensePlate(license_plate:string):Promise<Car | undefined>

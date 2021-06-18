@@ -4,6 +4,7 @@ interface IspecificationRepository{
     findByName(name:string):Promise<Specification | undefined>
     seeAll():Promise<Specification[]>
     create(name:string, descirption:string):Promise<Specification>
+    findById(ids:string[]):Promise<Specification[]>
 }
 
 export default IspecificationRepository

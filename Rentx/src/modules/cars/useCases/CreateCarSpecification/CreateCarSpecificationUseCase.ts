@@ -1,6 +1,7 @@
 import { inject, injectable } from "tsyringe";
 import AppError from "../../../../shared/errors/AppError";
 import ICarsRepository from "../../Repositories/ICarsRepository";
+import IspecificationRepository from "../../Repositories/ISpecificationRepository";
 
 
 interface IRequest{
@@ -13,7 +14,10 @@ class CreateCarSpecificationUseCase{
 
     constructor(
         @inject('carsRepository')
-        private carsRepository:ICarsRepository
+        private carsRepository:ICarsRepository,
+
+        @inject('specificationRepository')
+        private specificationRepository:IspecificationRepository
     ){}
 
     async execute({car_id,specification_id}:IRequest){
@@ -22,7 +26,15 @@ class CreateCarSpecificationUseCase{
         if(!carexisting){
             throw new AppError('Car not existing')
         }
+        const specifications = await this.specificationRepository.findById(
+            specification_id
+        )
+    
+        carexisting.specifications = specifications
 
+        await this.carsRepository.create(carexisting)
+
+        console.log(carexisting)
     }
 }
 

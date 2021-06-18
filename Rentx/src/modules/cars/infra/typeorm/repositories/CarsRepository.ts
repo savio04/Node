@@ -16,7 +16,8 @@ class CarsRepository implements ICarsRepository {
         category_id,
         daily_rate,
         fine_amount,
-        license_plate
+        license_plate,
+        specifications
     }:ICarsDTO){
         const car = this.carsRepository.create({
             name,
@@ -25,7 +26,8 @@ class CarsRepository implements ICarsRepository {
             category_id,
             daily_rate,
             fine_amount,
-            license_plate
+            license_plate,
+            specifications
         })
 
         await this.carsRepository.save(car)
@@ -61,7 +63,7 @@ class CarsRepository implements ICarsRepository {
     }
 
     async findById(id:string){
-        const car = await this.carsRepository.findOne({ id })
+        const car = await this.carsRepository.findOne({id})
 
         return car
     }

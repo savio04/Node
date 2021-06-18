@@ -36,7 +36,7 @@ class Car{
         joinColumns:[{name:'car_id'}],
         inverseJoinColumns:[{name: 'specificatino_id'}]
     })
-    specification:Specification[]
+    specifications:Specification[]
     
     @Column()
     brand:string

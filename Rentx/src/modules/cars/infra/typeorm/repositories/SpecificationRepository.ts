@@ -36,6 +36,11 @@ class SpecificationRepository implements IspecificationRepository{
         return specificationExisting
     }
 
+    public async findById(ids:string[]){
+        const spec:Specification[] = []
+        return spec
+    }
+
 }
 
 export default SpecificationRepository
