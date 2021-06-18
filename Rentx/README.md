@@ -12,23 +12,23 @@
 # Listagem de carros
 
 **Requisitos funcionais**  
-[ ] Deve ser possivel listar todos os carros disponiveis.  
-[ ] Deve ser possivel listar todos os carros disponiveis pelo o nome da cateogria.  
-[ ] Deve ser possivel listar todos os carros disponiveis pelo o nome da marca.  
-[ ] Deve ser possivel listar todos os carros disponiveis pelo o nome do carro.  
+[ x ] Deve ser possivel listar todos os carros disponiveis.  
+[ x ] Deve ser possivel listar todos os carros disponiveis pelo o nome da cateogria.  
+[ x ] Deve ser possivel listar todos os carros disponiveis pelo o nome da marca.  
+[ x ] Deve ser possivel listar todos os carros disponiveis pelo o nome do carro.  
 
 **Regras de negócio**  
-[ ] O usario não precisa estar logado no sistema.  
+[ x ] O usario não precisa estar logado no sistema.  
 
 
 # Cadastro de especificação no carro
 
 **Requisitos funcionais**  
-[ ] Deve ser possivel cadastrar um especificação para o carro.  
+[ x ] Deve ser possivel cadastrar um especificação para o carro.  
 
 
 **Regras de negócio**  
-[ ] Não deve ser possivel cadastrar uma especificação para um carro não cadastrado.  
+[ x ] Não deve ser possivel cadastrar uma especificação para um carro não cadastrado.  
 [ ] Não deve ser possivel cadastrar uma especificação ja existente para o mesmo carro.  
 
 
@@ -36,7 +36,6 @@
 
 **Requisitos funcionais**  
 [ ] Deve ser possivel cadastrar imagens de um carro.  
-[ ] Deve ser possivel listar todos os carros.  
 
 **Requisitos não funcionais**  
 [ ] Utilizar o multer para upload de arquivos.  
