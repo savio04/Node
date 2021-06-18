@@ -59,6 +59,12 @@ class CarsRepository implements ICarsRepository {
         const cars = await carsQuery.getMany()
         return cars
     }
+
+    async findById(id:string){
+        const car = await this.carsRepository.findOne({ id })
+
+        return car
+    }
 }
 
 export default CarsRepository

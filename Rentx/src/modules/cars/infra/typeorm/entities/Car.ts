@@ -1,5 +1,6 @@
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, JoinTable, ManyToMany, PrimaryGeneratedColumn } from "typeorm"
 import Category from "./Category"
+import Specification from "./Specification"
 
 @Entity('cars')
 class Car{
@@ -28,6 +29,14 @@ class Car{
     @ManyToMany(() => Category)
     @JoinColumn({name: 'category_id'})
     category:Category
+
+    @ManyToMany(() => Specification)
+    @JoinTable({
+        name: 'specifications_cars',
+        joinColumns:[{name:'car_id'}],
+        inverseJoinColumns:[{name: 'specificatino_id'}]
+    })
+    specification:Specification[]
     
     @Column()
     brand:string

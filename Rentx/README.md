@@ -25,8 +25,7 @@
 
 **Requisitos funcionais**  
 [ ] Deve ser possivel cadastrar um especificação para o carro.  
-[ ] Deve ser possivel listar todas as especificações.  
-[ ] Deve ser possivel listar todos os carros.  
+
 
 **Regras de negócio**  
 [ ] Não deve ser possivel cadastrar uma especificação para um carro não cadastrado.  

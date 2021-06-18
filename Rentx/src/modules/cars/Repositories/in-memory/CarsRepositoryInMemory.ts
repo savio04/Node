@@ -63,6 +63,12 @@ class CarsRepositoryInMemory implements ICarsRepository{
         
         return cars
     }
+
+    async findById(id:string){
+        const car = this.Cars.find(car => car.id === id)
+
+        return car
+    }
 }
 
 export default CarsRepositoryInMemory

@@ -17,6 +17,8 @@ interface ICarsRepository{
     
     findByLicensePlate(license_plate:string):Promise<Car | undefined>
 
+    findById(id:string):Promise<Car | undefined>
+
     listAll(brand?:string,category_id?:string,name?:string):Promise<Car[]>
 }
 
