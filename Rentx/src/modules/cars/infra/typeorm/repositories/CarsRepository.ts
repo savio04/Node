@@ -17,7 +17,8 @@ class CarsRepository implements ICarsRepository {
         daily_rate,
         fine_amount,
         license_plate,
-        specifications
+        specifications,
+        id
     }:ICarsDTO){
         const car = this.carsRepository.create({
             name,
@@ -27,7 +28,8 @@ class CarsRepository implements ICarsRepository {
             daily_rate,
             fine_amount,
             license_plate,
-            specifications
+            specifications,
+            id
         })
 
         await this.carsRepository.save(car)

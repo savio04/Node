@@ -58,12 +58,12 @@ export class CreateSpecificationCars1623967966414 implements MigrationInterface 
 
     public async down(queryRunner: QueryRunner): Promise<void> {
         await queryRunner.dropForeignKey(
-            "pecifications_cars",
+            "specifications_cars",
             "specification_car_fk"
         )
 
         await queryRunner.dropForeignKey(
-            "pecifications_cars",
+            "specifications_cars",
             "specification_fk"
         )
         

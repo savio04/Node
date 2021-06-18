@@ -37,7 +37,8 @@ class SpecificationRepository implements IspecificationRepository{
     }
 
     public async findById(ids:string[]){
-        const spec:Specification[] = []
+        const spec = await this.SpecificationRepository.findByIds(ids)
+        
         return spec
     }
 

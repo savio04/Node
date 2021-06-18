@@ -39,9 +39,17 @@ describe("Create car specififcation", () => {
             daily_rate:8999
         })
 
-        await createCarSpecificationUseCase.execute({
+        const specification = await specificationrepsoitoryInMemory.create(
+            'name teste',
+            'description teste'
+        )
+
+        const specificationCars = await createCarSpecificationUseCase.execute({
             car_id: car.id,
-            specification_id: ['4545']
+            specification_id: [specification.id]
         })
+
+        expect(specificationCars).toHaveProperty('specifications')
+        expect(specificationCars.specifications.length).toBe(1)
     })
 })
