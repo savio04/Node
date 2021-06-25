@@ -1,11 +1,16 @@
-import User from "../../accounts/infra/typeorm/entities/User";
-import Car from "../../cars/infra/typeorm/entities/Car";
 import Rental from "../infra/typeorm/entities/Rental";
 
 
+
+export interface IRentalDTO{
+    car_id:string
+    user_id:string
+    expected_date:Date
+}
 interface IRentalsRepository{
     findOpenRentalByCar(car_id:string):Promise<Rental | undefined>
     findOpenRentalByUser(user_id:string):Promise<Rental | undefined>
+    create({car_id,user_id,expected_date}:IRentalDTO):Promise<Rental>
 }
 
 

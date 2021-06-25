@@ -24,6 +24,14 @@ class CreateRentalUseCase{
         if(OpenRentalToUser){
             throw new AppError("There is a rental in progress for user!")
         }
+
+        const rental = await this.rentalsRepository.create({
+            car_id,
+            user_id,
+            expected_date
+        })
+
+        return rental
     }
 }
 
