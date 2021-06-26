@@ -1,4 +1,4 @@
-import {MigrationInterface, QueryRunner, Table} from "typeorm";
+import {IsNull, MigrationInterface, QueryRunner, Table} from "typeorm";
 
 export class CreateRentals1624624997092 implements MigrationInterface {
 
@@ -30,6 +30,7 @@ export class CreateRentals1624624997092 implements MigrationInterface {
                     {
                         name: 'end_date',
                         type: 'timestamp',
+                        isNullable:true
                     },
                     {
                         name: 'expected_date',
@@ -37,7 +38,8 @@ export class CreateRentals1624624997092 implements MigrationInterface {
                     }, 
                     {
                         name: 'total',
-                        type: 'numeric'
+                        type: 'numeric',
+                        isNullable:true
                     },
                     {
                         name: 'created_at',
