@@ -21,14 +21,14 @@ describe("Autheticate User", () => {
             name: 'name test',
             email: 'test2gmail.com', 
             password: '123454',
-            driver_license: '151511545',
+            driver_license: '151511545'
         }
 
         await createUserUseCase.execute(user)
 
         const result = await autheticateUseCase.execute({
-            email: user.email,
-            password: user.password
+            email: 'test2gmail.com',
+            password: '123454'
         })
 
         expect(result).toHaveProperty('token')
