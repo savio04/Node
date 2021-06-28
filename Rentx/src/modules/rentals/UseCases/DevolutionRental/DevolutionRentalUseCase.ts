@@ -14,7 +14,7 @@ class DevolutionRentalUseCase{
     constructor(
         @inject('rentalRepository')
         private rentalRepository:IRentalsRepository,
-        @inject('carsrepository')
+        @inject('carsRepository')
         private carsRepository:ICarsRepository,
         @inject('dateProvider')
         private dateProvider:IDateProvider,
@@ -22,12 +22,12 @@ class DevolutionRentalUseCase{
 
     async execute({id,user_id}:IRequest){
         const rental = await this.rentalRepository.findById(id)
-        const car = await this.carsRepository.findById(id)
         const minimum_daily = 1
-
+        
         if(!rental){
             throw new AppError('Rental does not existing')
         }
+        const car = await this.carsRepository.findById(rental?.car_id)
 
         if(!car){
             throw new AppError('Car does not existing')
@@ -45,10 +45,9 @@ class DevolutionRentalUseCase{
         }
 
         const delay = this.dateProvider.compareInDays(
-            dateNow,
-            rental.expected_date
+            rental.expected_date,
+            dateNow
         )
-
         let total = 0
 
         if(delay > 0){

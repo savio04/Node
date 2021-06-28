@@ -10,11 +10,14 @@ class RentalsRepository implements IRentalsRepository{
     constructor(){
         this.rentalRepository = getRepository(Rental)
     }
-    async create({car_id,user_id,expected_date}:IRentalDTO){
+    async create({car_id,user_id,expected_date,id,end_date,total}:IRentalDTO){
         const rental = this.rentalRepository.create({
             car_id,
             user_id,
-            expected_date
+            expected_date,
+            end_date,
+            id,
+            total
         })
 
         await this.rentalRepository.save(rental)
@@ -23,12 +26,16 @@ class RentalsRepository implements IRentalsRepository{
     }
 
     async findOpenRentalByCar(car_id:string){
-        return await this.rentalRepository.findOne({car_id})
+        return await this.rentalRepository.findOne({
+            where: {car_id,end_date:null}
+        })
 
     }
 
     async findOpenRentalByUser(user_id:string){
-        return await this.rentalRepository.findOne({user_id})
+        return await this.rentalRepository.findOne({
+            where: {user_id,end_date:null}
+        })
     }
 
     async findById(id:string){

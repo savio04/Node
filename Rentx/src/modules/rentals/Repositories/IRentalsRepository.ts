@@ -6,6 +6,9 @@ export interface IRentalDTO{
     car_id:string
     user_id:string
     expected_date:Date
+    id?:string
+    end_date?:Date
+    total?:number
 }
 interface IRentalsRepository{
     findOpenRentalByCar(car_id:string):Promise<Rental | undefined>
