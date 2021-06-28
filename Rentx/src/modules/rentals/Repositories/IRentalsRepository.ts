@@ -11,6 +11,7 @@ interface IRentalsRepository{
     findOpenRentalByCar(car_id:string):Promise<Rental | undefined>
     findOpenRentalByUser(user_id:string):Promise<Rental | undefined>
     create({car_id,user_id,expected_date}:IRentalDTO):Promise<Rental>
+    findById(id:string):Promise<Rental | undefined>
 }
 
 

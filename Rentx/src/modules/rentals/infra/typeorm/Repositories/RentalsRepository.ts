@@ -30,6 +30,12 @@ class RentalsRepository implements IRentalsRepository{
     async findOpenRentalByUser(user_id:string){
         return await this.rentalRepository.findOne({user_id})
     }
+
+    async findById(id:string){
+        const rental = await this.rentalRepository.findOne({id})
+
+        return rental
+    }
 }
 
 export default RentalsRepository
