@@ -2,6 +2,7 @@ import AppError from "../../../../shared/errors/AppError";
 import IRentalsRepository from "../../Repositories/IRentalsRepository";
 import IDateProvider from "../../../../shared/container/providers/DateProvider/IDateProvider";
 import { inject, injectable } from "tsyringe";
+import ICarsRepository from "../../../cars/Repositories/ICarsRepository";
 
 interface IRequest{
     car_id:string
@@ -15,7 +16,9 @@ class CreateRentalUseCase{
         @inject('rentalRepository')
         private rentalsRepository:IRentalsRepository,
         @inject('dateProvider')
-        private dateProvider:IDateProvider
+        private dateProvider:IDateProvider,
+        @inject('carsRepository')
+        private carsRepository:ICarsRepository
     ){}
     async execute({ car_id,user_id,expected_date }:IRequest){
         const minimunHours = 24
@@ -45,6 +48,8 @@ class CreateRentalUseCase{
             user_id,
             expected_date
         })
+
+        await this.carsRepository.updateAvailable(car_id,false)
 
         return rental
     }

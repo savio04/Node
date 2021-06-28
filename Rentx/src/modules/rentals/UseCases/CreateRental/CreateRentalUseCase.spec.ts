@@ -3,9 +3,11 @@ import RentalsRepositoryInMemory from "../../Repositories/in-memory/RentalsRepos
 import CreateRentalUseCase from "./CreateRentalUseCase"
 import dayjs from "dayjs"
 import DayJsDateProvider from "../../../../shared/container/providers/DateProvider/implemantations/DayjsDateProvider"
+import CarsRepositoryInMemory from "../../../cars/Repositories/in-memory/CarsRepositoryInMemory"
 
 let createRentalUsecase:CreateRentalUseCase
 let rentalRepositoryInMemory:RentalsRepositoryInMemory
+let carsRepositoryInMemory:CarsRepositoryInMemory
 let dayProvider:DayJsDateProvider
 
 describe("Create Rental", () => {
@@ -13,9 +15,11 @@ describe("Create Rental", () => {
     beforeEach(() => {
         rentalRepositoryInMemory = new RentalsRepositoryInMemory
         dayProvider = new DayJsDateProvider
+        carsRepositoryInMemory = new CarsRepositoryInMemory
         createRentalUsecase = new CreateRentalUseCase(
             rentalRepositoryInMemory,
-            dayProvider
+            dayProvider,
+            carsRepositoryInMemory
         )
     })
 

@@ -23,6 +23,8 @@ interface ICarsRepository{
     findById(id:string):Promise<Car | undefined>
 
     listAll(brand?:string,category_id?:string,name?:string):Promise<Car[]>
+
+    updateAvailable(id:string,available:boolean):Promise<void>
 }
 
 export default ICarsRepository
