@@ -21,7 +21,7 @@ RentalRoute.post(
 )
 
 RentalRoute.get(
-    '/',
+    '/user',
     ensureAutheticaded,
     listRentalsByUserController.handle
 )

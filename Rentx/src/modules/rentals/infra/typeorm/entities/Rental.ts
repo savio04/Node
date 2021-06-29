@@ -1,9 +1,14 @@
-import { Column, CreateDateColumn, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm"
+import Car from "../../../../cars/infra/typeorm/entities/Car"
 
 @Entity('rentals')
 class Rental{
     @PrimaryGeneratedColumn('uuid')
     id:string
+
+    @ManyToOne(() => Car)
+    @JoinColumn({name: 'car_id'})
+    car:Car
 
     @Column()
     car_id:string
