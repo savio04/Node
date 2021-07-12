@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "ts-node-dev --transpile-only --respawn --ignore node_modules src/shared/infra/http/server.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli.js",
-    "test": "NODE_ENV=test jest",
+    "test": "NODE_ENV=test jest --runInBand --detectOpenHandles",
     "seed:admin": "ts-node-dev src/shared/infra/typeorm/seed/admin.ts"
   },
   "main": "index.js",

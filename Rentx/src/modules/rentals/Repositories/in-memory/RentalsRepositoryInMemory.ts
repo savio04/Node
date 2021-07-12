@@ -44,6 +44,10 @@ class RentalsRepositoryInMemory implements IRentalsRepository{
 
         return rental
     }
+
+    async findRentalsByUser(id:string){
+        return this.rentals.filter(rental => rental.user_id === id)
+    }
 }
 
 export default RentalsRepositoryInMemory
