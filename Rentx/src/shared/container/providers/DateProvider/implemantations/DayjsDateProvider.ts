@@ -30,6 +30,10 @@ class DayJsDateProvider implements IDateProvider{
 
         return compare
     }
+
+    addDays(days:number){
+        return dayjs().add(days, 'days').toDate()
+    }
 }
 
 export default DayJsDateProvider
