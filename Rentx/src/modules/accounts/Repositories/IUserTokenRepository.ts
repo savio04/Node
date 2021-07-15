@@ -7,7 +7,9 @@ export interface IUserTokenDTO{
 }
 
 interface IUserTokenRepository{
-    create(data: IUserTokenDTO):Promise<UserToken>    
+    create(data: IUserTokenDTO):Promise<UserToken>   
+    findByUserIdAndRefreshToken(user_id:string,token:string):Promise<UserToken>
+    deleteById(id:string):Promise<void>
 }
 
 export default IUserTokenRepository
