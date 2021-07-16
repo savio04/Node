@@ -13,7 +13,9 @@ class SendForgotPasswordMailUseCase{
         @inject('userTokenRepository')
         private userTokenRepository:IUserTokenRepository,
         @inject('dateProvider')
-        private dateProvider:IDateProvider
+        private dateProvider:IDateProvider,
+        @inject('mailProvider')
+        private EtherealMailProvider:IMailProvider
     ){}
     async execute(email:string){
         const user = await this.userReposityory.findByEmail(email)
@@ -30,6 +32,12 @@ class SendForgotPasswordMailUseCase{
             user_id: user.id,
             expires_date
         })
+
+        await this.EtherealMailProvider.sendEmail(
+            email,
+            'Recuperação de senha',
+            `O link para recuperar senha ${token}`
+        )
     }
 }
 
