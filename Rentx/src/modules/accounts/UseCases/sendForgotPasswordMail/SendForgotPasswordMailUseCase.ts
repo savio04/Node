@@ -1,9 +1,11 @@
 import { inject, injectable } from "tsyringe";
 import { v4 } from "uuid";
 import IDateProvider from "../../../../shared/container/providers/DateProvider/IDateProvider";
+import IMailProvider from "../../../../shared/container/providers/MailProvider/IMailProvider";
 import AppError from "../../../../shared/errors/AppError";
 import IUsersRepository from "../../Repositories/IUsersRepository";
 import IUserTokenRepository from "../../Repositories/IUserTokenRepository";
+import { resolve } from 'path'
 
 @injectable()
 class SendForgotPasswordMailUseCase{
@@ -19,6 +21,14 @@ class SendForgotPasswordMailUseCase{
     ){}
     async execute(email:string){
         const user = await this.userReposityory.findByEmail(email)
+        const tamplatePath = resolve(
+            __dirname,
+            "..",
+            "..",
+            "views",
+            "emails",
+            "forgotPassword.hbs"
+        )
 
         if(!user){
             throw new AppError('User does not exists!')
@@ -33,10 +43,16 @@ class SendForgotPasswordMailUseCase{
             expires_date
         })
 
+        const variables = {
+            name: user.name,
+            link: `${process.env.FORGOT_MAIL_URL}${token}`
+        }
+
         await this.EtherealMailProvider.sendEmail(
             email,
             'Recuperação de senha',
-            `O link para recuperar senha ${token}`
+            variables,
+            tamplatePath
         )
     }
 }

@@ -1,6 +1,7 @@
 import nodemailer, { Transporter } from 'nodemailer'
 import IMailProvider from '../IMailProvider'
-
+import handlebars from 'handlebars'
+import fs from 'fs'
 class EtherealMailProvider implements IMailProvider{
     private Client:Transporter
     constructor(){
@@ -19,13 +20,16 @@ class EtherealMailProvider implements IMailProvider{
         }).catch(err => console.error(err))
     }
 
-    async sendEmail(to:string,subject:string,body:string){
+    async sendEmail(to:string,subject:string,variables:any,path:string){
+        const templateFileContent = fs.readFileSync(path).toString('utf-8')
+        const templateParse = handlebars.compile(templateFileContent)
+        const templateHTML = templateParse(variables)
+
         const message = await this.Client.sendMail({
             to,
             from: 'Rentx <noreplay@rentx.com.br>',
             subject,
-            text: body,
-            html: body
+            html: templateHTML
         })
 
         console.log('Message sent: %s', message.messageId);
