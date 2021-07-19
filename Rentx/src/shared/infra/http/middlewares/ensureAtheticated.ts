@@ -10,7 +10,7 @@ interface IPayload{
 }
 async function ensureAutheticaded(request:Request,response:Response,next:NextFunction){
     const {authorization} = request.headers
-    const userTokenRepository = new UserTokenRepository
+
     if(!authorization){
         throw new AppError('token not exist',401)
     }
@@ -19,17 +19,9 @@ async function ensureAutheticaded(request:Request,response:Response,next:NextFun
     try{
         const {sub:user_id} = verify(
             token,
-            auth.secret_refresh_token
+            auth.secret_token
         ) as IPayload
     
-        const user = await userTokenRepository.findByUserIdAndRefreshToken(
-            user_id,
-            token
-        )
-        if(!user){
-            throw new AppError('user not existing',401)
-        }
-        //Adicionando o id apos o usario ser altenticado
         request.user = {
             id: user_id
         }

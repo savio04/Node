@@ -44,7 +44,15 @@ class RefreshTokenUseCase{
             expires_date: refresh_token_expiresIn
         })
 
-        return refresh_token
+        const newToken= sign({}, auth.secret_token, {
+            subject: sub,
+            expiresIn: auth.expiresIn_token,
+        });
+
+        return {
+            refresh_token,
+            token: newToken
+        }
     }
 }
 
