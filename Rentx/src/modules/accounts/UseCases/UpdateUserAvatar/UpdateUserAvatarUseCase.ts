@@ -19,12 +19,12 @@ class UpdateUserAvatarUseCase {
     ) {}
 
     async execute({ user_id, avatar_file }: IRequest) {
-        const user = (await this.userRepostiroy.findById(user_id)) as IUserDTO;
+        const user = await this.userRepostiroy.findById(user_id) as IUserDTO;
 
         if (user.avatar) {
-            await this.storageProvider.delete(user.avatar, "avatar");
+            await this.storageProvider.delete(user.avatar, 'avatar');
         }
-        await this.storageProvider.save(avatar_file, "avatar");
+        await this.storageProvider.save(avatar_file, 'avatar');
 
         user.avatar = avatar_file;
 
